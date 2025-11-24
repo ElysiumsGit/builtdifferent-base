@@ -12,7 +12,7 @@ const components = {
   MuiPaper: {
     styleOverrides: {
       root: {
-        borderRadius: 12,
+        borderRadius: 11,
       },
     },
   },
