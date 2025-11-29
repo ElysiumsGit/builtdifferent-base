@@ -1,17 +1,49 @@
 import { Box, ButtonBase, IconButton, Typography } from "@mui/material";
-import React from "react";
-import MyIconButton from "../../../ui/components/IconButton/IconButton";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
-const DashBoardCard = () => {
+const DashBoardCard = ({ isArrow = "up" }) => {
   return (
     <ButtonBase
       sx={{
         width: "100%",
-        backgroundColor: "green",
+        background: "linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)",
         borderRadius: 2,
+        padding: "20px 20px 12px 20px",
+        position: "relative",
       }}
     >
+      <Box
+        position="absolute"
+        left={20} // bring it closer to the left edge
+        top={15} // adjust vertical position if needed
+        zIndex={1}
+        sx={{
+          opacity: 0.3, // make the arrow transparent
+          pointerEvents: "none", // optional: icon won't block clicks
+        }}
+      >
+        {isArrow === "up" ? (
+          <TrendingUpIcon
+            sx={{
+              height: "140px",
+              width: "100px",
+              color: "#fff", // optional: white arrow blends with gradient
+            }}
+          />
+        ) : (
+          <TrendingDownIcon
+            sx={{
+              height: "110px",
+              width: "110px",
+              color: "#fff", // optional: white arrow blends with gradient
+            }}
+          />
+        )}
+      </Box>
+
       <Box
         display={"flex"}
         flexDirection={"column"}
@@ -19,14 +51,9 @@ const DashBoardCard = () => {
         alignItems={"start"}
         justifyContent={"start"}
         width={"100%"}
-        padding={2}
+        zIndex={2}
       >
-        <Box
-          display={"flex"}
-          justifyContent={"space-between"}
-          width={"100%"}
-          alignItems={"center"}
-        >
+        <Box display={"flex"} justifyContent={"space-between"} width={"100%"}>
           <Box
             display={"flex"}
             flexDirection={"column"}
@@ -41,9 +68,20 @@ const DashBoardCard = () => {
             </Typography>
           </Box>
           <Box>
-            <Typography fontWeight={"bold"} color="white">
-              T
-            </Typography>
+            <Box
+              sx={{
+                backgroundColor: "grey",
+                borderRadius: "8px",
+                padding: "4px",
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+            >
+              <AccountCircleIcon
+                sx={{ color: "white", width: "40px", height: "40px" }}
+              />
+            </Box>
           </Box>
         </Box>
         <Box
@@ -53,7 +91,16 @@ const DashBoardCard = () => {
           justifyContent={"space-between"}
         >
           <Typography color="white">Last Month</Typography>
-          <MyIconButton Icon={AccountCircleIcon} />
+          <IconButton
+            onClick={() => {}}
+            sx={{
+              width: { xs: "35px", sm: "35px", md: "40px" },
+              height: { xs: "35px", sm: "35px", md: "40px" },
+            }}
+            flexShrink={0}
+          >
+            <MoreVertIcon sx={{ color: "white" }} />
+          </IconButton>
         </Box>
       </Box>
     </ButtonBase>

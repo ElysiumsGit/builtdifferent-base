@@ -1,10 +1,14 @@
 import { Typography, useTheme } from "@mui/material";
 
-const MyTypography = ({ type = "body", children, ...props }) => {
+const MyTypography = ({ variant, type = "body", children, ...props }) => {
   const theme = useTheme();
 
   return (
-    <Typography color={theme.palette.typography[type]} {...props}>
+    <Typography
+      variant={variant}
+      color={theme.palette.typography[type]}
+      {...props}
+    >
       {children}
     </Typography>
   );

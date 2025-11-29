@@ -1,10 +1,4 @@
-import {
-  Box,
-  ButtonBase,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, ButtonBase, useMediaQuery, useTheme } from "@mui/material";
 import React, { useContext, useState } from "react";
 import Logo from "../../../assets/logo.png";
 import MyImage from "../../../ui/components/Images/MyImage";
@@ -15,9 +9,9 @@ import MyIconButton from "../../../ui/components/IconButton/IconButton";
 import ThemeModeProvider from "../../../app/providers/ThemeModeProvider.jsx";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
-import SearchBar from "../../../ui/components/TextField/SearchBar.jsx";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MyTypography from "../../../ui/components/Typography/MyTypography.jsx";
+import MyTextField from "../../../ui/components/TextField/MyTextField.jsx";
 
 const Header = ({ hideNav }) => {
   const theme = useTheme();
@@ -62,7 +56,7 @@ const Header = ({ hideNav }) => {
               }}
             />
 
-            <SearchBar />
+            <MyTextField hasStartIcon width="300px" />
           </Box>
           <Box display={"flex"} gap={2}>
             <Box display="flex" alignItems="center" gap={1}>

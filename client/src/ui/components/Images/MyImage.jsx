@@ -1,9 +1,17 @@
 import React from "react";
 import { Box } from "@mui/material";
 
-const MyImage = ({ src, alt = "image", xs = 10, sm = 10, md = 10 }) => {
+const MyImage = ({
+  src,
+  alt = "image",
+  xs = 10,
+  sm = 10,
+  md = 10,
+  ...props
+}) => {
   return (
     <Box
+      {...props}
       sx={{
         width: {
           xs,

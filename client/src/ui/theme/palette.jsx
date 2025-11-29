@@ -23,6 +23,12 @@ export const lightPalette = {
   hover: {
     primary: "#0000000A",
   },
+  border: {
+    default: "#CCCCCC",
+    focus: "#1976d2",
+    hover: "#9f9f9f33",
+    error: "#D32F2F",
+  },
 };
 
 export const darkPalette = {
@@ -47,6 +53,12 @@ export const darkPalette = {
   },
   hover: {
     primary: "#FFFFFF14",
+  },
+  border: {
+    default: "#444F6B",
+    focus: "#90caf9",
+    hover: "#FFFFFF14",
+    error: "#FF6B6B",
   },
 };
 
