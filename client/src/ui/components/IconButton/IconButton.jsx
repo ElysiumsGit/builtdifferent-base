@@ -10,6 +10,7 @@ const MyIconButton = ({ Icon = AbcIcon, color = "black", onClick }) => {
       onClick={onClick}
       sx={{
         backgroundColor: theme.palette.textfield.background,
+        border: `1px solid ${theme.palette.border.default}`,
         color,
         width: { xs: "35px", sm: "35px", md: "40px" },
         height: { xs: "35px", sm: "35px", md: "40px" },

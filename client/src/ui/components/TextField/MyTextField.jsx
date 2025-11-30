@@ -29,6 +29,7 @@ const MyTextField = ({
         width,
         borderRadius: "6px",
         backgroundColor: theme.palette.textfield.background,
+        border: `1px solid ${theme.palette.border.default}`,
         "& fieldset": { border: "none" },
       }}
       slotProps={{

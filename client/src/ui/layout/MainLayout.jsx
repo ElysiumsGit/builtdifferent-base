@@ -7,7 +7,8 @@ const MainLayout = ({ children }) => {
   return (
     <Box
       paddingX={3}
-      paddingY={2}
+      paddingTop={2}
+      paddingBottom={4}
       sx={{
         backgroundColor: theme.palette.background.default,
       }}
