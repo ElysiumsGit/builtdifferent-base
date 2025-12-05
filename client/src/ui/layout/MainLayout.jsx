@@ -9,6 +9,9 @@ const MainLayout = ({ children }) => {
       paddingX={3}
       paddingTop={2}
       paddingBottom={4}
+      display={"flex"}
+      flexDirection={"column"}
+      gap={2}
       sx={{
         backgroundColor: theme.palette.background.default,
       }}

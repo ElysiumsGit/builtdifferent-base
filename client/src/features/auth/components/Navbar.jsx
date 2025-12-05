@@ -2,6 +2,7 @@ import { Box, useTheme } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import MyIcon from "../../../ui/components/Icon/MyIcon";
 import MyButtonNav from "./MyButtonsNav";
+import GroupIcon from "@mui/icons-material/Group";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -11,6 +12,12 @@ const Navbar = () => {
       link: "/",
       label: "Dashboard",
       icon: <MyIcon myIcon={DashboardIcon} />,
+      dropdown: [],
+    },
+    {
+      link: "/users",
+      label: "Manage User",
+      icon: <MyIcon myIcon={GroupIcon} />,
       dropdown: [],
     },
     {

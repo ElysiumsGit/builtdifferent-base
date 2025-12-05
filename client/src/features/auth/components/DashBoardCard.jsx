@@ -17,12 +17,12 @@ const DashBoardCard = ({ isArrow = "up" }) => {
     >
       <Box
         position="absolute"
-        left={20} // bring it closer to the left edge
-        top={15} // adjust vertical position if needed
+        left={20}
+        top={15}
         zIndex={1}
         sx={{
-          opacity: 0.3, // make the arrow transparent
-          pointerEvents: "none", // optional: icon won't block clicks
+          opacity: 0.3,
+          pointerEvents: "none",
         }}
       >
         {isArrow === "up" ? (
@@ -30,7 +30,7 @@ const DashBoardCard = ({ isArrow = "up" }) => {
             sx={{
               height: "140px",
               width: "100px",
-              color: "#fff", // optional: white arrow blends with gradient
+              color: "#fff",
             }}
           />
         ) : (
@@ -38,7 +38,7 @@ const DashBoardCard = ({ isArrow = "up" }) => {
             sx={{
               height: "110px",
               width: "110px",
-              color: "#fff", // optional: white arrow blends with gradient
+              color: "#fff",
             }}
           />
         )}

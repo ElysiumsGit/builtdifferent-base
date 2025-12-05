@@ -69,13 +69,7 @@ const Dashboard = () => {
         </Grid>
       </Grid>
 
-      <Box
-        mt={2}
-        padding={2}
-        sx={{ backgroundColor: theme.palette.foreground.default }}
-      >
-        <MyTable />
-      </Box>
+      <MyTable />
     </>
   );
 };

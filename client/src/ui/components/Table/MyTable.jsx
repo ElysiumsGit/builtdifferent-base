@@ -155,24 +155,38 @@ export default function MyTable() {
   };
 
   return (
-    <>
+    <Box
+      padding={2}
+      borderRadius={2}
+      sx={{ backgroundColor: theme.palette.foreground.default }}
+    >
       <MyTypography variant="h6" fontWeight="bold" mb={4}>
         Users
       </MyTypography>
       <Box
         sx={{
           display: "flex",
+          flexDirection: { md: "row", xs: "column" },
           justifyContent: "space-between",
           mb: 2,
         }}
       >
-        <Box display={"flex"} gap={1}>
+        <Box
+          display={"flex"}
+          gap={1}
+          mb={{ xs: 2, md: 0 }}
+          alignItems={"center"}
+        >
           <MyTextField placeholder="Search..." hasStartIcon width="300px" />
           <MySquareButtonIcon icon={TuneIcon} />
         </Box>
-        <Box display={"flex"} gap={1}>
+        <Box display={"flex"} gap={1} alignItems={"center"}>
           <MySquareButtonIcon icon={LocalPrintshopIcon} />
-          <MyButton borderRadius={2} buttonText="Add Button" />
+          <MyButton
+            sx={{ width: { xs: "100%" } }}
+            borderRadius={2}
+            buttonText="Add Button"
+          />
         </Box>
       </Box>
       <Paper
@@ -185,12 +199,12 @@ export default function MyTable() {
       >
         <TableContainer sx={{ borderRadius: 2 }}>
           <Table aria-label="sticky table">
-            <TableHead sx={{ backgroundColor: "#1866EE" }}>
+            <TableHead sx={{ backgroundColor: theme.palette.primary.main }}>
               <TableRow>
                 {columns.map((column) => (
                   <TableCell
                     sx={{
-                      color: "white",
+                      color: "black",
                     }}
                     key={column.id}
                     align={column.align}
@@ -295,6 +309,6 @@ export default function MyTable() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-    </>
+    </Box>
   );
 }

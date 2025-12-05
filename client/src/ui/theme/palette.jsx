@@ -2,7 +2,7 @@ import typography from "./typography";
 
 export const lightPalette = {
   mode: "light",
-  primary: { main: "#1976d2" },
+  primary: { main: "#1866EE" },
   background: {
     default: "#EBE9E9",
     paper: "#ffffff",
