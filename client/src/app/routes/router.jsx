@@ -3,7 +3,8 @@ import App from "../App";
 import Dashboard from "../../pages/Dashboard";
 import Login from "../../features/auth/pages/Login";
 import Register from "../../features/auth/pages/Register";
-import User from "../../pages/User";
+import UserList from "../../pages/ManageUser/UserList";
+import AddUser from "../../pages/ManageUser/AddUser";
 
 const router = createBrowserRouter([
   {
@@ -15,8 +16,12 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "/users",
-        element: <User />,
+        path: "/user/list",
+        element: <UserList />,
+      },
+      {
+        path: "/user/add",
+        element: <AddUser />,
       },
       {
         path: "/orders",

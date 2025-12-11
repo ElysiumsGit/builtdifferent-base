@@ -18,7 +18,16 @@ const Navbar = () => {
       link: "/users",
       label: "Manage User",
       icon: <MyIcon myIcon={GroupIcon} />,
-      dropdown: [],
+      dropdown: [
+        {
+          title: "User List",
+          dropdownLink: "/user/list",
+        },
+        {
+          title: "Add User",
+          dropdownLink: "/user/add",
+        },
+      ],
     },
     {
       link: "/orders",
@@ -56,7 +65,7 @@ const Navbar = () => {
         backgroundColor: theme.palette.foreground.default,
 
         "&::-webkit-scrollbar": {
-          display: "none", // ✅ hide scrollbar
+          display: "none",
         },
       }}
     >

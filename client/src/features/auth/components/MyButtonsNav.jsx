@@ -1,5 +1,5 @@
 import { Box, ButtonBase, Divider, useTheme } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import MyIcon from "../../../ui/components/Icon/MyIcon";
 import MyTypography from "../../../ui/components/Typography/MyTypography";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -14,7 +14,6 @@ const MyButtonNav = ({ items }) => {
 
   return (
     <>
-      {/* MAIN BUTTON */}
       <ButtonBase
         onClick={() => {
           if (items.dropdown?.length > 0) {
@@ -54,7 +53,24 @@ const MyButtonNav = ({ items }) => {
           <Box>
             {items.dropdown.map((data, index) => (
               <Box key={index} sx={{ padding: "6px 0" }}>
-                <MyTypography fontSize="12px">{data.title}</MyTypography>
+                <Link to={data.dropdownLink} style={{ textDecoration: "none" }}>
+                  <MyTypography
+                    fontSize="14px"
+                    color={
+                      location.pathname === data.dropdownLink
+                        ? "primary.main"
+                        : theme.palette.typography.subtitle
+                    }
+                    sx={{
+                      "&:hover": {
+                        color: "primary.main",
+                        cursor: "pointer",
+                      },
+                    }}
+                  >
+                    {data.title}
+                  </MyTypography>
+                </Link>
               </Box>
             ))}
           </Box>
