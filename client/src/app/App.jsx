@@ -7,6 +7,7 @@ import { useState } from "react";
 
 function App() {
   const [hideNavbar, setHideNavbar] = useState(true);
+  const isMobile = useMediaQuery("(max-width: 1200px)");
 
   return (
     <Box height="100vh" overflow="hidden">
@@ -14,11 +15,12 @@ function App() {
 
       <Box display="flex" height="calc(100vh - 64px)">
         {/* Sidebar */}
-        {hideNavbar && (
-          <Box flex={1}>
-            <Navbar />
-          </Box>
-        )}
+        {hideNavbar ||
+          (!isMobile && (
+            <Box flex={1}>
+              <Navbar />
+            </Box>
+          ))}
 
         {/* Scrollable container for Outlet */}
         <Box

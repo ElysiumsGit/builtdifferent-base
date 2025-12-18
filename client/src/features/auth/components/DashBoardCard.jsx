@@ -97,7 +97,7 @@ const DashBoardCard = ({ isArrow = "up" }) => {
               width: { xs: "35px", sm: "35px", md: "40px" },
               height: { xs: "35px", sm: "35px", md: "40px" },
             }}
-            flexShrink={0}
+            flexshrink={0}
           >
             <MoreVertIcon sx={{ color: "white" }} />
           </IconButton>

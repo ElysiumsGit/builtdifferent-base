@@ -15,7 +15,7 @@ const MyIconButton = ({ Icon = AbcIcon, color = "black", onClick }) => {
         width: { xs: "35px", sm: "35px", md: "40px" },
         height: { xs: "35px", sm: "35px", md: "40px" },
       }}
-      flexShrink={0}
+      flexshrink={0}
     >
       <Icon
         sx={{

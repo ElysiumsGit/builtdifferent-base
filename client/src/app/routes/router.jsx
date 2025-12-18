@@ -5,10 +5,12 @@ import Login from "../../features/auth/pages/Login";
 import Register from "../../features/auth/pages/Register";
 import UserList from "../../pages/ManageUser/UserList";
 import AddUser from "../../pages/ManageUser/AddUser";
+import ProductAdd from "../../pages/Products/ProductAdd";
+import ProductList from "../../pages/Products/ProductList";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/dashboard",
     element: <App />,
     children: [
       {
@@ -16,21 +18,25 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "/user/list",
+        path: "user/list",
         element: <UserList />,
       },
       {
-        path: "/user/add",
+        path: "user/add",
         element: <AddUser />,
       },
       {
-        path: "/orders",
-        element: <div>Orders</div>,
+        path: "product/list",
+        element: <ProductList />,
+      },
+      {
+        path: "product/add",
+        element: <ProductAdd />,
       },
     ],
   },
   {
-    path: "/login",
+    path: "/",
     element: <Login />,
   },
   {

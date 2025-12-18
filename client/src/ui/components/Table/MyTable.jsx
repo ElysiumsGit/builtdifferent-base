@@ -18,7 +18,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const columns = [
+const columnsDummy = [
   { id: "name", label: "Name", minWidth: 170 },
   { id: "email", label: "Email", minWidth: 200 },
   { id: "role", label: "Role", minWidth: 120 },
@@ -31,7 +31,7 @@ function createData(name, email, role, status, joinDate) {
   return { name, email, role, status, joinDate };
 }
 
-const rows = [
+const rowsDummy = [
   createData(
     "John Doe",
     "john.doe@example.com",
@@ -139,7 +139,19 @@ const rows = [
   ),
 ];
 
-export default function MyTable() {
+export default function MyTable({
+  tableTitle = "Table Title",
+  buttonTitle = "Add Button",
+  hasAddButton = true,
+  hasPrinter = true,
+  hasFilter = true,
+  addButtonFunction,
+  viewFunction,
+  editFunction,
+  deleteFunction,
+  columns = columnsDummy,
+  rows = rowsDummy,
+}) {
   const theme = useTheme();
 
   const [page, setPage] = React.useState(0);
@@ -161,7 +173,7 @@ export default function MyTable() {
       sx={{ backgroundColor: theme.palette.foreground.default }}
     >
       <MyTypography variant="h6" fontWeight="bold" mb={4}>
-        Users
+        {tableTitle}
       </MyTypography>
       <Box
         sx={{
@@ -178,15 +190,18 @@ export default function MyTable() {
           alignItems={"center"}
         >
           <MyTextField placeholder="Search..." hasStartIcon width="300px" />
-          <MySquareButtonIcon icon={TuneIcon} />
+          {hasFilter && <MySquareButtonIcon icon={TuneIcon} />}
         </Box>
         <Box display={"flex"} gap={1} alignItems={"center"}>
-          <MySquareButtonIcon icon={LocalPrintshopIcon} />
-          <MyButton
-            sx={{ width: { xs: "100%" } }}
-            borderRadius={2}
-            buttonText="Add Button"
-          />
+          {hasPrinter && <MySquareButtonIcon icon={LocalPrintshopIcon} />}
+          {hasAddButton && (
+            <MyButton
+              onClick={addButtonFunction}
+              sx={{ width: { xs: "100%" } }}
+              borderRadius={2}
+              buttonText={buttonTitle}
+            />
+          )}
         </Box>
       </Box>
       <Paper
@@ -228,9 +243,10 @@ export default function MyTable() {
                     {columns.map((column) => {
                       if (column.id === "action") {
                         return (
-                          <TableCell key={column.id} align="start">
+                          <TableCell key={column.id} align={column.align}>
                             <Box display={"flex"} gap={1}>
                               <ButtonBase
+                                onClick={viewFunction}
                                 sx={{
                                   backgroundColor: "#27BF68",
                                   padding: "8px",
@@ -246,6 +262,7 @@ export default function MyTable() {
                                 />
                               </ButtonBase>
                               <ButtonBase
+                                onClick={editFunction}
                                 sx={{
                                   backgroundColor: "#27BF68",
                                   padding: "8px",
@@ -261,6 +278,7 @@ export default function MyTable() {
                                 />
                               </ButtonBase>
                               <ButtonBase
+                                onClick={deleteFunction}
                                 sx={{
                                   backgroundColor: "#27BF68",
                                   padding: "8px",
@@ -280,12 +298,9 @@ export default function MyTable() {
                         );
                       }
 
-                      const value = row[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
+                          {column.render ? column.render(row) : row[column.id]}
                         </TableCell>
                       );
                     })}
@@ -295,7 +310,6 @@ export default function MyTable() {
           </Table>
         </TableContainer>
 
-        {/* ✅ Force only 10 rows per page */}
         <TablePagination
           sx={{
             backgroundColor: theme.palette.background.default,

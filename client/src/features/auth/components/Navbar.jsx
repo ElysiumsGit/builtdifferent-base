@@ -3,52 +3,39 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import MyIcon from "../../../ui/components/Icon/MyIcon";
 import MyButtonNav from "./MyButtonsNav";
 import GroupIcon from "@mui/icons-material/Group";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const Navbar = () => {
   const theme = useTheme();
 
   const navItems = [
     {
-      link: "/",
+      link: "/dashboard",
       label: "Dashboard",
       icon: <MyIcon myIcon={DashboardIcon} />,
       dropdown: [],
     },
     {
-      link: "/users",
       label: "Manage User",
       icon: <MyIcon myIcon={GroupIcon} />,
       dropdown: [
-        {
-          title: "User List",
-          dropdownLink: "/user/list",
-        },
-        {
-          title: "Add User",
-          dropdownLink: "/user/add",
-        },
+        { title: "User List", dropdownLink: "/dashboard/user/list" },
+        { title: "Add User", dropdownLink: "/dashboard/user/add" },
       ],
     },
     {
       link: "/orders",
       label: "Products",
-      icon: <MyIcon myIcon={DashboardIcon} />,
+      icon: <MyIcon myIcon={ShoppingCartIcon} />,
       dropdown: [
-        {
-          title: "Product List",
-        },
-        {
-          title: "Product View",
-        },
-        {
-          title: "Product Upload",
-        },
+        { title: "Product List", dropdownLink: "/dashboard/product/list" },
+        { title: "Product Add", dropdownLink: "/dashboard/product/add" },
       ],
     },
     {
       link: "/orders",
-      label: "Orders",
-      icon: <MyIcon myIcon={DashboardIcon} />,
+      label: "Message",
+      icon: <MyIcon myIcon={ShoppingCartIcon} />,
       dropdown: [],
     },
   ];

@@ -18,7 +18,7 @@ const MyImage = ({
           sm,
           md,
         },
-        flexShrink: 0,
+        flexshrink: 0,
       }}
     >
       <Box
