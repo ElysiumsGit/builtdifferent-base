@@ -35,27 +35,25 @@ function handleClick(event) {
   console.info("You clicked a breadcrumb.");
 }
 
-export default function MyBreadCrumbs() {
+export default function MyBreadCrumbs({ items }) {
   const theme = useTheme();
+
+  console.log("items", items);
 
   return (
     <div role="presentation" onClick={handleClick}>
       <Breadcrumbs aria-label="breadcrumb">
-        <StyledBreadcrumb
-          sx={{
-            backgroundColor: theme.palette.background.default,
-          }}
-          component="a"
-          href="#"
-          label="Home"
-          icon={<HomeIcon fontSize="small" />}
-        />
-        <StyledBreadcrumb component="a" href="#" label="Catalog" />
-        <StyledBreadcrumb
-          label="Accessories"
-          deleteIcon={<ExpandMoreIcon />}
-          onDelete={handleClick}
-        />
+        {items.map((item) => (
+          <StyledBreadcrumb
+            sx={{
+              backgroundColor: theme.palette.background.default,
+            }}
+            component="a"
+            href="#"
+            label={item.label}
+            icon={item.icon}
+          />
+        ))}
       </Breadcrumbs>
     </div>
   );

@@ -2,8 +2,12 @@ import { Box, useTheme } from "@mui/material";
 import React from "react";
 import MyBreadCrumbs from "../../../ui/components/BreadCrumbs/MyBreadCrumbs";
 import MyTypography from "../../../ui/components/Typography/MyTypography";
+import HomeIcon from "@mui/icons-material/Home";
 
-const BreadCrumbs = ({ title = "User List" }) => {
+const BreadCrumbs = ({
+  title = "User List",
+  breadCrumbsItems = [{ label: "Home", icon: <HomeIcon /> }],
+}) => {
   const theme = useTheme();
 
   return (
@@ -23,7 +27,7 @@ const BreadCrumbs = ({ title = "User List" }) => {
           display: { xs: "none", md: "block" },
         }}
       >
-        <MyBreadCrumbs />
+        <MyBreadCrumbs items={breadCrumbsItems} />
       </Box>
     </Box>
   );

@@ -8,6 +8,7 @@ import MyButton from "../components/Button/MyButton";
 import MyDropdown from "../components/Dropdown/MyDropdown";
 import useRegionStore from "../../app/store/useRegionStore";
 import { fetchRegions } from "../../app/services/regionService";
+import MySnackbar from "../components/SnackBar/MySnackBar";
 
 const UserForm = () => {
   const {
@@ -31,6 +32,8 @@ const UserForm = () => {
     barangay: { name: "", code: "" },
     email: "",
   });
+
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     getRegion();
@@ -91,7 +94,11 @@ const UserForm = () => {
       email: forms.email,
     };
 
-    console.log(payload);
+    try {
+      setOpen(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -239,6 +246,14 @@ const UserForm = () => {
         <ImageUploadBox />
         <MyButton buttonText="SUBMIT" onClick={handleSubmit} />
       </FormLayout>
+
+      <MySnackbar
+        open={open}
+        onClose={() => setOpen(false)}
+        message="Successfully added a user!"
+        vertical="top"
+        horizontal="right"
+      />
     </>
   );
 };
