@@ -1,0 +1,36 @@
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+dotenv.config();
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+export const sendEmail = async ({ to, subject, text, html, password }) => {
+  try {
+    const mailOptions = {
+      from: `"System Notification" <${process.env.EMAIL_USER}>`,
+      to,
+      subject,
+      text,
+      html: `<h2>Account Credentials</h2>
+    <p>Your temporary password is:</p>
+    <p style="font-size:18px; font-weight:bold;">
+      ${password}
+    </p>
+    <p>Please change your password after logging in.</p>
+  `,
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+    console.log("✅ Email sent:", info.response);
+    return info;
+  } catch (error) {
+    console.error("❌ Error sending email:", error);
+    throw new Error("Email sending failed");
+  }
+};
