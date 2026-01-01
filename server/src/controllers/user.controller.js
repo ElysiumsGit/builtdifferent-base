@@ -31,10 +31,13 @@ export const createUser = async (req, res) => {
 
     const user = await User.create(validateUser);
 
+    const userWithoutPassword = user.toObject();
+    delete userWithoutPassword.password;
+
     res.status(201).json({
       success: true,
       message: "User created successfully",
-      data: user,
+      data: userWithoutPassword,
     });
   } catch (error) {
     if (error.name === "ZodError") {
@@ -44,6 +47,23 @@ export const createUser = async (req, res) => {
       });
     }
 
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const readUser = async (req, res) => {
+  try {
+    const users = await User.find();
+
+    res.status(201).json({
+      success: true,
+      message: "User read successfully",
+      data: users,
+    });
+  } catch (error) {
     res.status(400).json({
       success: false,
       message: error.message,

@@ -4,6 +4,7 @@ export const createUserSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   middleName: z.string().optional(),
   lastName: z.string().min(1, "Last name is required"),
+  contactNumber: z.string().min(1, "Contact number is required"),
   region: z.string().min(1, "Region is required"),
   province: z.string().min(1, "Province is required"),
   municipality: z.string().min(1, "Municipality is required"),

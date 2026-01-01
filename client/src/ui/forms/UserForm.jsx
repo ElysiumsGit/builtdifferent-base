@@ -6,8 +6,7 @@ import FormLayout from "../layout/FormLayout";
 import ImageUploadBox from "../../features/auth/components/ImageUploadBox";
 import MyButton from "../components/Button/MyButton";
 import MyDropdown from "../components/Dropdown/MyDropdown";
-import useRegionStore from "../../app/store/useRegionStore";
-import { fetchRegions } from "../../app/services/regionService";
+import useLocationStore from "../../app/store/useLocationStore.jsx";
 import MySnackbar from "../components/SnackBar/MySnackBar";
 
 const UserForm = () => {
@@ -20,7 +19,7 @@ const UserForm = () => {
     getProvince,
     getMunicipality,
     getBarangay,
-  } = useRegionStore();
+  } = useLocationStore();
   const [forms, setForm] = useState({
     firstName: "",
     middleName: "",

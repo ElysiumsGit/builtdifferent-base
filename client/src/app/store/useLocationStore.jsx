@@ -4,9 +4,9 @@ import {
   filterBarangay,
   filterMunicipality,
   filterProvince,
-} from "../services/regionService";
+} from "../services/locationService";
 
-const useRegionStore = create((set) => ({
+const useLocationStore = create((set) => ({
   regions: [],
   provinces: [],
   municipalities: [],
@@ -64,4 +64,4 @@ const useRegionStore = create((set) => ({
   },
 }));
 
-export default useRegionStore;
+export default useLocationStore;

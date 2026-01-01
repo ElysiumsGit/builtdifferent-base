@@ -38,8 +38,6 @@ function handleClick(event) {
 export default function MyBreadCrumbs({ items }) {
   const theme = useTheme();
 
-  console.log("items", items);
-
   return (
     <div role="presentation" onClick={handleClick}>
       <Breadcrumbs aria-label="breadcrumb">

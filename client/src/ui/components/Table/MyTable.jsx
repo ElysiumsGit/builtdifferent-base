@@ -146,9 +146,6 @@ export default function MyTable({
   hasPrinter = true,
   hasFilter = true,
   addButtonFunction,
-  viewFunction,
-  editFunction,
-  deleteFunction,
   columns = columnsDummy,
   rows = rowsDummy,
 }) {
@@ -246,7 +243,7 @@ export default function MyTable({
                           <TableCell key={column.id} align={column.align}>
                             <Box display={"flex"} gap={1}>
                               <ButtonBase
-                                onClick={viewFunction}
+                                onClick={row.handleView}
                                 sx={{
                                   backgroundColor: "#27BF68",
                                   padding: "8px",
@@ -262,7 +259,7 @@ export default function MyTable({
                                 />
                               </ButtonBase>
                               <ButtonBase
-                                onClick={editFunction}
+                                onClick={row.handleEdit}
                                 sx={{
                                   backgroundColor: "#27BF68",
                                   padding: "8px",
@@ -278,7 +275,7 @@ export default function MyTable({
                                 />
                               </ButtonBase>
                               <ButtonBase
-                                onClick={deleteFunction}
+                                onClick={row.handleDelete}
                                 sx={{
                                   backgroundColor: "#27BF68",
                                   padding: "8px",

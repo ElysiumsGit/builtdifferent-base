@@ -40,10 +40,25 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     require: true,
+    select: false,
   },
   validId: {
     type: [String],
     required: true,
+  },
+});
+
+userSchema.set("toJSON", {
+  transform: (doc, ret) => {
+    delete ret.password;
+    return ret;
+  },
+});
+
+userSchema.set("toObject", {
+  transform: (doc, ret) => {
+    delete ret.password;
+    return ret;
   },
 });
 
