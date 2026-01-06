@@ -9,6 +9,10 @@ export const createUserSchema = z.object({
   province: z.string().min(1, "Province is required"),
   municipality: z.string().min(1, "Municipality is required"),
   barangay: z.string().min(1, "Barangay is required"),
+  streetAddress: z.string().min(1, "Street address is required"),
   email: z.string().email("Invalid email"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
   validId: z.array(z.string()).min(1, "At least one ID is required"),
+  role: z.enum(["customer", "admin"]).optional(),
+  isVerified: z.boolean().optional(),
 });

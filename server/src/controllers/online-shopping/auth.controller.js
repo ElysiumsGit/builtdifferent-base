@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
-import User from "../model/user.model.js";
-import generateToken from "../lib/generateToken.js";
+import User from "../../model/online-shopping/user.model.js";
+import generateToken from "../../lib/generateToken.js";
 
 export const login = async (req, res) => {
   try {

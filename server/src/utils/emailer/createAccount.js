@@ -10,15 +10,14 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export const sendEmail = async ({ to, subject, text, html, password }) => {
+export const sendEmail = async ({ to, subject, password }) => {
   try {
     const mailOptions = {
       from: `"System Notification" <${process.env.EMAIL_USER}>`,
       to,
       subject,
-      text,
       html: `<h2>Account Credentials</h2>
-    <p>Your temporary password is:</p>
+    <p>Your temporary password is: </p>
     <p style="font-size:18px; font-weight:bold;">
       ${password}
     </p>

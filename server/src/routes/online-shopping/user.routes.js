@@ -1,6 +1,9 @@
 import express from "express";
-import { createUser, readUser } from "../controllers/user.controller.js";
-import protectedRoute from "../middleware/protectedRoute.js";
+import {
+  createUser,
+  readUser,
+} from "../../controllers/online-shopping/user.controller.js";
+import protectedRoute from "../../middleware/protectedRoute.js";
 
 const router = express.Router();
 
